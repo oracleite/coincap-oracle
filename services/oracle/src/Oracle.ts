@@ -1,5 +1,7 @@
 import { getResponse } from "./Responder"
-import * as Config from "./Config.json"
+import * as Config from "./ConfigExample.json"
+//**** NOTE THIS IS A PUBLIC SEED! NEVER USE ON MAINNET! ****
+
 const Web3 = require('web3');
 import { ZapProvider } from "@zapjs/provider";
 import { ZapToken } from "@zapjs/zaptoken"

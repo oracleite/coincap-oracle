@@ -3,6 +3,8 @@
 
     <div id="content" style="width: 100%;">
       Powered by :zap:
+    <br />
+      your metamask address: {{accounts}}
     </div>
 
 
@@ -10,6 +12,7 @@
 </template>
 
 <script>
+  import { ethers } from 'ethers'
 
 export default {
   name: 'PageIndex',
@@ -18,9 +21,18 @@ export default {
   data () {
     return {
       status:"online",
+      accounts:""
     }
   },
-  mounted: function () {
+  mounted: async function () {
+
+    //detect metamask
+    const newAccounts = await ethereum.request({
+      method: 'eth_requestAccounts',
+    })
+    console.log("metamask accounts: ",newAccounts)
+    this.accounts = newAccounts.toString()
+
   },
   methods: {
   },

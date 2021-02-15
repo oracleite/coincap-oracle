@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-img height=50px width=50px src="../assets/zap.png"></q-img>
         <q-toolbar-title>
-          Zap Oracles
+          Oracles.cc
         </q-toolbar-title>
 
         <div>API v{{ $q.version }}</div>

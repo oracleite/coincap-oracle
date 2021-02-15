@@ -2,6 +2,8 @@
 /deploy/node_modules/
 /modules/support/loggerdog/node_modules/
 
+
+Config.json
 .yarnrc
 node_modules
 .env*

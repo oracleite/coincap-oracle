@@ -1,0 +1,4 @@
+#example .env file
+
+#Trezor test seed (Carefull very public!)
+WALLET_TEST_SEED=alcohol woman abuse must during monitor noble actual mixed trade anger aisle

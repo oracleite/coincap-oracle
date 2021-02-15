@@ -1,10 +1,10 @@
 {
-  "name": "pioneer-server",
+  "name": "coincap-oracle-server",
   "version": "0.0.10",
-  "description": "Pioneer is a multi-asset blockchain explorer and subscription service",
+  "description": "A ZAP protocal oracle",
   "main": "dist/main.js",
   "productName": "Pioneer",
-  "cordovaId": "org.cordova.quasar.app",
+  "cordovaId": "",
   "capacitorId": "",
   "author": "highlander <bithighlander@gmail.com>",
   "scripts": {
