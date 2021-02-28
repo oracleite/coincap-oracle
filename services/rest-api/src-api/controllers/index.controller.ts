@@ -7,11 +7,13 @@
  */
 let TAG = ' | API | '
 
+let coincapClient = require('@pioneer-platform/coincap')
+const CoinGecko = require('coingecko-api');
+const CoinGeckoClient = new CoinGecko();
+
 const pjson = require('../../package.json');
 const log = require('@pioneer-platform/loggerdog')()
 const os = require("os")
-
-
 
 //rest-ts
 import { Body, Controller, Get, Post, Route, Tags, SuccessResponse, Query, Request, Response, Header } from 'tsoa';
@@ -33,6 +35,10 @@ interface Health {
     hostname:string,
     uptime:any,
     loadavg:any
+}
+
+interface coincapBodyData {
+    asset: any;
 }
 
 // interface Health {
@@ -90,6 +96,65 @@ export class IndexController extends Controller {
     }
 
     /*
+           Coincap Feed
+           Get usd value of coin
+     */
+
+    /**
+     * get coincap feed
+     * @param
+     */
+
+    @Post('/coincapQuoteUsd')
+    public async coincapQuoteUsd(@Body() body: coincapBodyData): Promise<any> {
+        let tag = TAG + " | coincapQuoteUsd | "
+        try{
+            log.debug(tag,"account: ",body)
+            if(!body.asset) throw Error("body.asset must be defined!")
+
+            let result = await coincapClient.getPrice(body.asset.toUpperCase())
+            return result.priceUsd
+        }catch(e){
+            let errorResp:Error = {
+                success:false,
+                tag,
+                e
+            }
+            log.error(tag,"e: ",{errorResp})
+            throw new ApiError("error",503,"error: "+e.toString());
+        }
+    }
+
+    /*
+           CoinGecko Feed
+           Get usd value of coin
+     */
+
+    @Post('/coinGeckoQuoteUsd')
+    public async coinGeckoQuoteUsd(@Body() body: any): Promise<any> {
+        let tag = TAG + " | coinGeckoQuoteUsd | "
+        try{
+            log.debug(tag,"account: ",body)
+            if(!body.asset) throw Error("body.asset must be defined!")
+
+            let data = await CoinGeckoClient.coins.fetch('bitcoin', {});
+            console.log("data: ",data)
+
+            return data.market_data.current_price.usd
+        }catch(e){
+            let errorResp:Error = {
+                success:false,
+                tag,
+                e
+            }
+            log.error(tag,"e: ",{errorResp})
+            throw new ApiError("error",503,"error: "+e.toString());
+        }
+    }
+
+    /*
+           //TODO
+           Alethiometer Feed
            Get usd value of coin
      */
 

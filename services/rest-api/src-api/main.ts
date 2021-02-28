@@ -3,7 +3,13 @@
      Basic TSOA REST api
             -Highlander
  */
-
+require('dotenv').config()
+require('dotenv').config({path:"./.env"})
+require('dotenv').config({path:"./../.env"})
+require('dotenv').config({path:"./../../.env"})
+require('dotenv').config({path:"../../../.env"})
+require('dotenv').config({path:"../../../../.env"})
+require('dotenv').config({path:"./../../../../.env"})
 const pjson = require('../package.json');
 const TAG = " | "+ pjson.name +" | "
 const log = require('@pioneer-platform/loggerdog')()
@@ -18,7 +24,7 @@ const swaggerDocument = require('../api/dist/swagger.json')
 
 const app = express();
 const server = require('http').Server(app);
-let API_PORT = parseInt(process.env["API_PORT_PIONEER"]) || 80
+let API_PORT = parseInt(process.env["API_PORT_REST"]) || 80
 
 var corsOptions = {
     origin: function (origin, callback) {

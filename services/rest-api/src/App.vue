@@ -6,6 +6,7 @@
 
 <script>
 // import { colors } from 'quasar'
+import store from './store'
 
 export default {
   name: 'App',

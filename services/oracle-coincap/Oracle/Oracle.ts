@@ -1,7 +1,12 @@
-import { getResponse } from "./Responder"
-import * as Config from "./ConfigExample.json"
-//**** NOTE THIS IS A PUBLIC SEED! NEVER USE ON MAINNET! ****
+require('dotenv').config()
+require("dotenv").config({path:'./../.env'})
+require("dotenv").config({path:'./../../.env'})
+require("dotenv").config({path:'../../../.env'})
+require("dotenv").config({path:'../../../../.env'})
+require("dotenv").config({path:'../../../../../.env'})
 
+import { getResponse } from "./Responder"
+// import * as Config from "./Config"
 const Web3 = require('web3');
 import { ZapProvider } from "@zapjs/provider";
 import { ZapToken } from "@zapjs/zaptoken"
@@ -12,6 +17,9 @@ const IPFS = require("ipfs-mini")
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 const IPFS_GATEWAY = "https://gateway.ipfs.io/ipfs/"
 // import { connectStatus } from "./Status"
+const config = require("./Config")
+const Config = config.Config
+console.log("Config: ",Config)
 
 export class ZapOracle {
     web3: any
