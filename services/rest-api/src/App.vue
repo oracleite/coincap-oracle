@@ -3,7 +3,7 @@
     <router-view />
   </div>
 </template>
-
+<script defer src="https://unpkg.com/zap-bond-widget@latest"></script>
 <script>
 // import { colors } from 'quasar'
 import store from './store'

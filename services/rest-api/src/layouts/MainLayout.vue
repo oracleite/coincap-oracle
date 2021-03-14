@@ -47,9 +47,6 @@
 
       <router-view />
     </q-page-container>
-<!--    <app-modal></app-modal>-->
-
-
 
   </q-layout>
 </template>
