@@ -9,14 +9,10 @@ export const Config = {
     "EndpointSchema": {
         "name": "(Oracles.cc) CoinGecko USDprice",
         "curve": [
-            2,
-            5000000000000000000,
-            2000000000000000000,
-            1000,
-            2,
             0,
-            3000000000000000000,
-            1000000000000000000
+            0,
+            100000000,
+            1000000
         ],
         "broker": "",
         "md": "Provide asset price quoted in USD (resp in (INT) pennies)",
